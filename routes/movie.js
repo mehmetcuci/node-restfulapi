@@ -23,9 +23,9 @@ router.post('/', (req, res, next) => {
   const addData = movie.save();
   addData.then((data) => {
     res.json({status: 1});
-  }).catch(err){
+  }).catch(err => {
     res.json(err);
-  }
+  })
 
 });
 
