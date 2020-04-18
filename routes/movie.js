@@ -5,10 +5,25 @@ const router = express.Router();
 
 const Movie = require("../models/Movie");
 
+router.get('/', (req, res, next) => {
+
+  const allMovies = Movie.find({});
+  allMovies.then((data) => {
+    res.json(data);
+  }).catch(err => {
+    res.json(err);
+  })
+
+});
+
 router.post('/', (req, res, next) => {
   const { title, imdb_score, category, country, year } = req.body;
   const movie = new Movie({
-    category: "a"
+    title,
+    imdb_score,
+    category,
+    country,
+    year
   })
 
   /*movie.save((err, data) => {
